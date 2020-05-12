@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@JsonIgnoreProperties(ignoreUnknown = true)//nie zwróci innych pól niż są zawarte w klasie
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TrelloListDto {
     @JsonProperty
     private String id;

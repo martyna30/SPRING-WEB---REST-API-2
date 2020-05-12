@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CreatedTrelloCard { //klasa, na którą będziemy mapować odpowiedź z serwera aplikacji
+public class CreatedTrelloCard {
 
     @JsonProperty("id")
     private String id;
