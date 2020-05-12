@@ -7,6 +7,7 @@ import com.crud.tasks.domain.TrelloCardDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -15,6 +16,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
+
+import static java.util.Optional.ofNullable;
+import static org.hibernate.bytecode.BytecodeLogger.LOGGER;
 
 @Component
 public class TrelloClient {
@@ -42,15 +47,13 @@ public class TrelloClient {
                 .queryParam("lists", "all")
                 .build().encode().toUri();
 
-        TrelloBoardDto[] boardsResponse  = restTemplate.getForObject(url, TrelloBoardDto[].class);
-
-        if (boardsResponse != null) {
-            return Arrays.asList(boardsResponse);
+        try {
+            TrelloBoardDto[] boardsResponse = restTemplate.getForObject(url, TrelloBoardDto[].class);
+            return Arrays.asList(ofNullable(boardsResponse).orElse(new TrelloBoardDto[0]));
+        } catch (RestClientException e) {
+            LOGGER.error(e.getMessage(), e);
+            return new ArrayList<>();
         }
-        return new ArrayList<>();
-       // return Optional.ofNullable(boardsResponse);   //Optional powstał po to żebyśmy nie
-        //        // musieli umieszczać w kodzie warunków sprawdzających czy referencja ma wartość null.
-
     }
 
     public CreatedTrelloCard createNewCard(TrelloCardDto trelloCardDto) {
@@ -66,5 +69,4 @@ public class TrelloClient {
 
         return restTemplate.postForObject(url,null, CreatedTrelloCard.class);
     }
-
 }
