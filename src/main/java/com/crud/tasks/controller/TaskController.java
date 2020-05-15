@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
+@CrossOrigin(origins = "*") //pozwoli na komunikację serwera warstwy frontendowej z warstwą backendową:
 @RestController //jest w stanie przyjmować oraz zwracać dane za pomocą żądań i odpowiedzi HTTP,
 @RequestMapping("/v1/task") //, adnotacja aby określić adres, pod którym Controller będzie przyjmował żądania,
 // oraz nad metodami, aby określić adresy i typy żądań, na które metody Controllera będą reagować.

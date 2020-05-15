@@ -9,8 +9,7 @@ import org.springframework.web.client.RestTemplate;
 public class CoreConfiguration {
 
     @Bean
-    public RestTemplate restTemplate() {//umożliwia realizowanie żądań HTTP pomiędzy serwerami. Dzięki niej możemy wykonywać różnego rodzaju żądania takie jak np. GET, POST,
-        // i natychmiast przetwarzać odpowiedź serwera na obiekt
+    public RestTemplate restTemplate() {
         return new RestTemplate();
     }
 }
