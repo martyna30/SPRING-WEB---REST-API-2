@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class DbService {
+public class DbService {//odpowiedzilna za komunikacje z bazą
     @Autowired
-    private TaskRepository repository;
+    TaskRepository repository;
 
     public List<Task> getAllTasks() {
         return repository.findAll();

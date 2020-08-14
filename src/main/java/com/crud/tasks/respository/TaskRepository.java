@@ -2,11 +2,15 @@ package com.crud.tasks.respository;
 
 import com.crud.tasks.domain.Task;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-public interface TaskRepository extends CrudRepository<Task,Long> {//. Wewnątrz ostrych nawiasów podajemy obiekt,
+@Transactional
+@Repository
+public interface TaskRepository extends CrudRepository<Task, Long> {//. Wewnątrz ostrych nawiasów podajemy obiekt,
     // który będziemy pobierać //CrudRepository, która jest udostępniana w bibliotekach springframework i
     // udostępnia metody oraz logikę pobierania danych z bazy danych.
     @Override
@@ -20,4 +24,7 @@ public interface TaskRepository extends CrudRepository<Task,Long> {//. Wewnątrz
 
     @Override
     void deleteById(Long id);
+
+    @Override
+    long count();
 }

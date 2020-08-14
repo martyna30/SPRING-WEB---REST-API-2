@@ -11,8 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class TrelloListDto {
+@JsonIgnoreProperties(ignoreUnknown = true)//Konsekwencją niezastosowania tej adnotacji jest zgłoszenie wyjątku przez Springa, mówiącego o tym,
+// że odpowiedź z serwera jest inna niż ta, którą chcemy zmapować na obiekt.
+public class TrelloListDto {//nie zwróci innych pól niż są zawarte w klasie
+
     @JsonProperty
     private String id;
 

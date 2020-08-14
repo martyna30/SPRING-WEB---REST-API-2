@@ -11,7 +11,6 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AttachmentsByType {
 

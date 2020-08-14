@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Badges {
 

@@ -3,6 +3,7 @@ package com.crud.tasks.config;
 import com.crud.tasks.domain.Badges;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -12,6 +13,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+@EnableScheduling//umozliwia ustawienie interwału dla czynności np. wysyłce maila
 @EnableSwagger2 //obsługa swwagera
 @Configuration
 public class CoreConfiguration implements WebMvcConfigurer { //pozwala na implementacje metody udostepniającej statyczne dane(html,js.css-widoki)
@@ -19,7 +21,8 @@ public class CoreConfiguration implements WebMvcConfigurer { //pozwala na implem
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
-    }
+    }////umożliwia realizowanie żądań HTTP pomiędzy serwerami. Dzięki niej możemy wykonywać różnego rodzaju żądania takie jak np. GET, POST,
+    // i natychmiast przetwarzać odpowiedź serwera na obiekt w javie
 
     @Bean public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)

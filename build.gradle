@@ -20,14 +20,25 @@ repositories {
 }
 
 dependencies {
+    //Swagger
+    compile('io.springfox:springfox-swagger2:2.7.0')
+    compile('io.springfox:springfox-swagger-ui:2.7.0')
+
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    //developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    ///compile('mysql:mysql-connector-java')
-    compile ('org.postgresql:postgresql')
+    compile('mysql:mysql-connector-java')
+    //compile ('org.postgresql:postgresql')
     compileOnly('org.projectlombok:lombok')
     annotationProcessor('org.projectlombok:lombok')
+    compile('org.springframework.boot:spring-boot-starter-mail:2.3.0.RELEASE')
+    compile('com.google.code.gson:gson:2.8.2')
+    //testCompile group: 'com.h2database', name: 'h2', version: '1.4.200'
+    //runtimeOnly('com.h2database:h2')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.13.1'
+
 }
 
 test {

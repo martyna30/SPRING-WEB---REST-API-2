@@ -12,7 +12,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TrelloBoardDto {
+public class TrelloBoardDto {//obiekty DTO, które opuszczają naszą aplikację
+    // tzn. są zwracane przez controller,
+    // bądź są wysyłane do zewnętrznych serwisów.
+    //Rest Template odpowiada za  przetwarzanie odpowiedzi serwera na obiekt w javie
+    //tutaj podajemy tylko takie pola ktore chcemy otrzymać w odpowiedzi serwera
 
     @JsonProperty("id")
     private String id;
