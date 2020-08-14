@@ -4,18 +4,16 @@ import com.crud.tasks.domain.*;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.List;
-import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TrelloMapperTest {
-    @Mock
-    private TrelloMapper trelloMapper;
+
+
+    private TrelloMapper trelloMapper = new TrelloMapper();
 
     @Test
     public void testMapToBoard() {
@@ -26,21 +24,13 @@ public class TrelloMapperTest {
         List<TrelloBoardDto> trelloBoardDto = new ArrayList<>();
         trelloBoardDto.add(new TrelloBoardDto("1", "my_Board", trelloList));
 
-        List<TrelloList> mappedTrelloLists = new ArrayList<>();
-        mappedTrelloLists.add(new TrelloList("1", "my_list", false));
-
-        List<TrelloBoard> mappedTrelloBoard = new ArrayList<>();
-        mappedTrelloBoard.add(new TrelloBoard("1", "my Board", mappedTrelloLists));
-
-        when(trelloMapper.mapToBoard(trelloBoardDto)).thenReturn(mappedTrelloBoard);
-
         //When
         List<TrelloBoard> mappedtrelloBoards = trelloMapper.mapToBoard(trelloBoardDto);
 
         //Then
         Assert.assertNotNull(mappedtrelloBoards);
         Assert.assertEquals(1, mappedtrelloBoards.size());
-        Assert.assertEquals("my Board", mappedtrelloBoards.get(0).getName());
+        Assert.assertEquals("my_Board", mappedtrelloBoards.get(0).getName());
 
         Assert.assertEquals("my_Board", trelloBoardDto.get(0).getName());
     }
@@ -59,7 +49,7 @@ public class TrelloMapperTest {
         List<TrelloBoard> mappedTrelloBoard = new ArrayList<>();
         mappedTrelloBoard.add(new TrelloBoard("1", "my_Board", mappedTrelloLists));
 
-        when(trelloMapper.mapToBoardDto(mappedTrelloBoard)).thenReturn(trelloBoardDto);
+        //when(trelloMapper.mapToBoardDto(mappedTrelloBoard)).thenReturn(trelloBoardDto);
 
         //When
         List<TrelloBoardDto> trelloBoardsDtos = trelloMapper.mapToBoardDto(mappedTrelloBoard);
@@ -86,7 +76,7 @@ public class TrelloMapperTest {
         List<TrelloBoard> mappedTrelloBoard = new ArrayList<>();
         mappedTrelloBoard.add(new TrelloBoard("1", "my_Board", mappedTrelloLists));
 
-        when(trelloMapper.mapToList(trelloList)).thenReturn(mappedTrelloLists);
+        //when(trelloMapper.mapToList(trelloList)).thenReturn(mappedTrelloLists);
 
         //When
         List<TrelloList> mappedTrellolist = trelloMapper.mapToList(trelloList);
@@ -113,7 +103,7 @@ public class TrelloMapperTest {
         List<TrelloBoard> mappedTrelloBoard = new ArrayList<>();
         mappedTrelloBoard.add(new TrelloBoard("1", "my_Board", mappedTrelloLists));
 
-        when(trelloMapper.mapToListDto(mappedTrelloLists)).thenReturn(trelloList);
+        //when(trelloMapper.mapToListDto(mappedTrelloLists)).thenReturn(trelloList);
 
         //When
         List<TrelloListDto> listDtos = trelloMapper.mapToListDto(mappedTrelloLists);
@@ -132,7 +122,7 @@ public class TrelloMapperTest {
 
         TrelloCardDto trelloCardDto = new TrelloCardDto("1","test","test cart","top");
 
-        when(trelloMapper.mapToCartDto(trelloCard)).thenReturn(trelloCardDto);
+        //when(trelloMapper.mapToCartDto(trelloCard)).thenReturn(trelloCardDto);
 
         //When
         TrelloCardDto theCartDto = trelloMapper.mapToCartDto(trelloCard);
@@ -152,7 +142,7 @@ public class TrelloMapperTest {
 
         TrelloCardDto trelloCardDto = new TrelloCardDto("1","test","test cart","top");
 
-        when(trelloMapper.mapToCart(trelloCardDto)).thenReturn(trelloCard);
+        //when(trelloMapper.mapToCart(trelloCardDto)).thenReturn(trelloCard);
 
         //When
         TrelloCard theCart = trelloMapper.mapToCart(trelloCardDto);
